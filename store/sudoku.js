@@ -1,5 +1,7 @@
 import { makepuzzle, solvepuzzle } from 'sudoku'
 
+export const HISTORY_LENGTH = 10
+
 export const state = () => ({
     boardHistoryIndex: 0,
     boardHistory: []
@@ -94,7 +96,7 @@ export const mutations = {
                 getters
                     .board(state)
                     .map((cell) => (cell.index === index && !cell.initial ? { ...cell, value: value !== null ? parseFloat(value) : null } : cell)),
-                ...state.boardHistory.slice(state.boardHistoryIndex, state.boardHistoryIndex + 10)
+                ...state.boardHistory.slice(state.boardHistoryIndex, state.boardHistoryIndex + HISTORY_LENGTH)
             ]
             state.boardHistoryIndex = 0
         }
