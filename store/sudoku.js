@@ -95,7 +95,11 @@ export const mutations = {
             state.boardHistory = [
                 getters
                     .board(state)
-                    .map((cell) => (cell.index === index && !cell.initial ? { ...cell, value: value !== null ? parseFloat(value) : null } : cell)),
+                    .map((cell) =>
+                        cell.index === index && !cell.initial
+                            ? { ...cell, value: value !== null ? parseFloat(value) : null }
+                            : cell
+                    ),
                 ...state.boardHistory.slice(state.boardHistoryIndex, state.boardHistoryIndex + HISTORY_LENGTH)
             ]
             state.boardHistoryIndex = 0

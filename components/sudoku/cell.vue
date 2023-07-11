@@ -1,6 +1,15 @@
 <template>
-    <div class="sudoku-cell" :class="{ 'sudoku-cell--initial': initial || currentCell.initial, 'sudoku-cell--incorrect': incorrect }">
-        <input v-model.number="currentValue" type="number" :disabled="currentCell.initial" class="sudoku-cell__input" @input="updateValue" />
+    <div
+        class="sudoku-cell"
+        :class="{ 'sudoku-cell--initial': initial || currentCell.initial, 'sudoku-cell--incorrect': incorrect }"
+    >
+        <input
+            v-model.number="currentValue"
+            type="number"
+            :disabled="currentCell.initial"
+            class="sudoku-cell__input"
+            @input="updateValue"
+        />
     </div>
 </template>
 
@@ -37,7 +46,10 @@ export default {
     methods: {
         updateValue() {
             if (/^(\s*|[1-9]{1})$/.test(this.currentValue)) {
-                return this.$store.commit('sudoku/updateCell', { index: this.index, value: this.currentValue !== '' ? this.currentValue : null })
+                return this.$store.commit('sudoku/updateCell', {
+                    index: this.index,
+                    value: this.currentValue !== '' ? this.currentValue : null
+                })
             }
 
             this.currentValue = this.currentCell.value

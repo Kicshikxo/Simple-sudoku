@@ -45,7 +45,13 @@
             />
         </div>
         <div class="sudoku-board__control">
-            <app-button label="Новая игра" icon="mdi-autorenew" variant="primary" style="width: 100%" @click="$store.dispatch('sudoku/generateBoard')" />
+            <app-button
+                label="Новая игра"
+                icon="mdi-autorenew"
+                variant="primary"
+                style="width: 100%"
+                @click="$store.dispatch('sudoku/generateBoard')"
+            />
         </div>
     </div>
 </template>
@@ -119,8 +125,8 @@ export default {
     margin: var(--sudoku-segment-gap);
     transform: translateY(
         calc(
-            (var(--sudoku-cell-size) + var(--sudoku-segment-gap)) * var(--incorrect-row) + (var(--sudoku-board-gap) + var(--sudoku-segment-gap)) *
-                var(--incorrect-segment-row)
+            (var(--sudoku-cell-size) + var(--sudoku-segment-gap)) * var(--incorrect-row) +
+                (var(--sudoku-board-gap) + var(--sudoku-segment-gap)) * var(--incorrect-segment-row)
         )
     );
 }
@@ -130,8 +136,8 @@ export default {
     margin: var(--sudoku-segment-gap);
     transform: translateX(
         calc(
-            (var(--sudoku-cell-size) + var(--sudoku-segment-gap)) * var(--incorrect-column) + (var(--sudoku-board-gap) + var(--sudoku-segment-gap)) *
-                var(--incorrect-segment-column)
+            (var(--sudoku-cell-size) + var(--sudoku-segment-gap)) * var(--incorrect-column) +
+                (var(--sudoku-board-gap) + var(--sudoku-segment-gap)) * var(--incorrect-segment-column)
         )
     );
 }
