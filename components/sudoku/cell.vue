@@ -1,0 +1,78 @@
+<template>
+    <div class="sudoku-cell" :class="{ 'sudoku-cell--initial': initial || currentCell.initial, 'sudoku-cell--incorrect': incorrect }">
+        <input v-model.number="currentValue" type="number" :disabled="currentCell.initial" class="sudoku-cell__input" @input="updateValue" />
+    </div>
+</template>
+
+<script>
+export default {
+    props: {
+        index: {
+            type: Number,
+            required: true,
+            validator: (value) => value >= 0 && value <= 9 * 9
+        },
+        initial: {
+            type: Boolean,
+            default: false
+        },
+        incorrect: {
+            type: Boolean,
+            default: false
+        }
+    },
+    data: ({ $store, index }) => ({
+        currentValue: $store.state.sudoku.board.at(index).value
+    }),
+    computed: {
+        currentCell({ $store }) {
+            return $store.state.sudoku.board.at(this.index)
+        }
+    },
+    watch: {
+        currentCell({ value }) {
+            this.currentValue = value
+        }
+    },
+    methods: {
+        updateValue() {
+            if (/^(|\d{1})$/.test(this.currentValue)) {
+                return this.$store.commit('sudoku/updateCell', { index: this.index, value: this.currentValue !== '' ? this.currentValue : null })
+            }
+
+            this.currentValue = this.currentCell.value
+        }
+    }
+}
+</script>
+
+<style>
+.sudoku-cell {
+    width: var(--sudoku-cell-size);
+    height: var(--sudoku-cell-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: var(--gray-300);
+    transition: background 0.2s;
+}
+.sudoku-cell--initial {
+    font-size: calc(var(--sudoku-cell-font-size) + 0.5rem);
+    background: var(--gray-200);
+}
+.sudoku-cell--incorrect {
+    background: var(--red-400);
+}
+.sudoku-cell__input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    text-align: center;
+    color: var(--gray-900);
+    font-size: 1rem;
+    font-size: var(--sudoku-cell-font-size);
+    border-radius: 6px;
+}
+</style>
