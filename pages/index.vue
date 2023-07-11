@@ -6,8 +6,6 @@
     </app-container>
 </template>
 
-<script></script>
-
 <style>
 .sudoku-board__wrapper {
     width: 100%;
