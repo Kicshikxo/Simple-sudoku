@@ -56,10 +56,12 @@ export default {
     border-radius: 6px;
     background: var(--gray-300);
     transition: background 0.2s;
+    border: 1px solid var(--gray-400);
 }
 .sudoku-cell--initial {
     font-size: calc(var(--sudoku-cell-font-size) + 0.5rem);
     background: var(--gray-200);
+    border: none;
 }
 .sudoku-cell--incorrect {
     background: var(--red-400);
@@ -74,5 +76,8 @@ export default {
     font-size: 1rem;
     font-size: var(--sudoku-cell-font-size);
     border-radius: 6px;
+}
+.sudoku-cell__input:focus {
+    outline: 2px solid var(--gray-500);
 }
 </style>
