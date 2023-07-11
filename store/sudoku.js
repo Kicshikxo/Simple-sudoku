@@ -9,6 +9,13 @@ export const getters = {
     board(state) {
         return state.boardHistory.at(state.boardHistoryIndex)
     },
+    solvedBoard(state, getters) {
+        return solvepuzzle(getters.board.map((cell) => (cell.value !== null ? cell.value - 1 : null)))?.map((value, index) => ({
+            value: value !== null ? value + 1 : null,
+            index,
+            initial: getters.board.at(index).initial
+        }))
+    },
     incorrectRows(state, getters) {
         const incorrectRows = []
 
@@ -64,7 +71,7 @@ export const getters = {
         return state.boardHistoryIndex >= 1
     },
     isSolutionAvailable(state, getters) {
-        return !!solvepuzzle(getters.board.map((cell) => (cell.value !== null ? cell.value - 1 : null)))
+        return !!getters.solvedBoard
     },
     isGameOver(state, getters) {
         return (
@@ -106,14 +113,7 @@ export const actions = {
     },
     solveBoard({ getters, commit }) {
         if (getters.isSolutionAvailable) {
-            commit(
-                'updateBoard',
-                solvepuzzle(getters.board.map((cell) => (cell.value !== null ? cell.value - 1 : null))).map((value, index) => ({
-                    value: value !== null ? value + 1 : null,
-                    index,
-                    initial: getters.board.at(index).initial
-                }))
-            )
+            commit('updateBoard', getters.solvedBoard)
         }
     },
     previousState({ state, commit }) {
