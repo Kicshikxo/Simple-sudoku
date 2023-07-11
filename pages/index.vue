@@ -1,11 +1,7 @@
 <template>
     <app-container>
         <div class="sudoku-board__wrapper">
-            <sudoku-board
-                :incorrect-row="$store.getters['sudoku/incorrectRow']"
-                :incorrect-column="$store.getters['sudoku/incorrectColumn']"
-                :incorrect-segments="$store.getters['sudoku/incorrectSegments']"
-            />
+            <sudoku-board />
         </div>
     </app-container>
 </template>

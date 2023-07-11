@@ -1,8 +1,27 @@
 <template>
     <div class="sudoku-board">
         <div class="sudoku-board__control">
-            <app-button label="Отменить ход" icon="mdi-restore" variant="danger" disabled />
-            <app-button label="Восстановить ход" icon="mdi-share" icon-position="right" variant="success" disabled />
+            <app-button
+                label="Отменить ход"
+                icon="mdi-restore"
+                variant="danger"
+                :disabled="!$store.getters['sudoku/isPreviousStateAvailable']"
+                @click="$store.dispatch('sudoku/previousState')"
+            />
+            <app-button
+                label="Решить"
+                icon="mdi-check"
+                :disabled="$store.getters['sudoku/isGameOver'] || !$store.getters['sudoku/isSolutionAvailable']"
+                @click="$store.dispatch('sudoku/solveBoard')"
+            />
+            <app-button
+                label="Восстановить ход"
+                icon="mdi-share"
+                icon-position="right"
+                variant="success"
+                :disabled="!$store.getters['sudoku/isFollowingStateAvailable']"
+                @click="$store.dispatch('sudoku/followingState')"
+            />
         </div>
         <div
             class="sudoku-board__segments"
@@ -33,21 +52,10 @@
 
 <script>
 export default {
-    props: {
-        incorrectRow: {
-            type: Number,
-            default: null,
-            validator: (value) => value >= 0 && value <= 9
-        },
-        incorrectColumn: {
-            type: Number,
-            default: null,
-            validator: (value) => value >= 0 && value <= 9
-        },
-        incorrectSegments: {
-            type: Array,
-            default: () => []
-        }
+    computed: {
+        incorrectRow: ({ $store }) => $store.getters['sudoku/incorrectRows'].at(0) ?? null,
+        incorrectColumn: ({ $store }) => $store.getters['sudoku/incorrectColumns'].at(0) ?? null,
+        incorrectSegments: ({ $store }) => $store.getters['sudoku/incorrectSegments'] ?? null
     }
 }
 </script>
