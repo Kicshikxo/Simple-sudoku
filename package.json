@@ -13,20 +13,23 @@
         "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
     },
     "dependencies": {
-        "core-js": "^3.25.3",
-        "nuxt": "^2.15.8",
-        "vue": "^2.7.10",
-        "vue-server-renderer": "^2.7.10",
-        "vue-template-compiler": "^2.7.10"
+        "@mdi/font": "^7.2.96",
+        "core-js": "^3.31.1",
+        "nuxt": "^2.17.0",
+        "nuxt-icon": "^0.4.2",
+        "sudoku": "^0.0.3",
+        "vue": "^2.7.14",
+        "vue-server-renderer": "^2.7.14",
+        "vue-template-compiler": "^2.7.14"
     },
     "devDependencies": {
-        "@babel/eslint-parser": "^7.19.1",
+        "@babel/eslint-parser": "^7.22.7",
         "@nuxtjs/eslint-config": "^11.0.0",
         "@nuxtjs/eslint-module": "^3.1.0",
-        "eslint": "^8.24.0",
-        "eslint-config-prettier": "^8.5.0",
+        "eslint": "^8.44.0",
+        "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-nuxt": "^4.0.0",
-        "eslint-plugin-vue": "^9.5.1",
-        "prettier": "^2.7.1"
+        "eslint-plugin-vue": "^9.15.1",
+        "prettier": "^2.8.8"
     }
 }
