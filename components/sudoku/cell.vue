@@ -10,7 +10,7 @@ export default {
         index: {
             type: Number,
             required: true,
-            validator: (value) => value >= 0 && value <= 9 * 9
+            validator: (value) => value >= 0 && value < 9 * 9
         },
         initial: {
             type: Boolean,
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         updateValue() {
-            if (/^(|\d{1})$/.test(this.currentValue)) {
+            if (/^(\s*|[1-9]{1})$/.test(this.currentValue)) {
                 return this.$store.commit('sudoku/updateCell', { index: this.index, value: this.currentValue !== '' ? this.currentValue : null })
             }
 

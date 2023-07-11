@@ -14,12 +14,12 @@ export default {
         row: {
             type: Number,
             required: true,
-            validator: (value) => value >= 0 && value <= 3
+            validator: (value) => value >= 0 && value < 3
         },
         column: {
             type: Number,
             required: true,
-            validator: (value) => value >= 0 && value <= 3
+            validator: (value) => value >= 0 && value < 3
         },
         incorrect: {
             type: Boolean,
