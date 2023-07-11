@@ -88,8 +88,9 @@ export default {
     font-size: 1rem;
     font-size: var(--sudoku-cell-font-size);
     border-radius: 6px;
+    transition: box-shadow 0.2s;
 }
 .sudoku-cell__input:focus {
-    outline: 2px solid var(--gray-500);
+    box-shadow: 0 0 0 2px var(--gray-500);
 }
 </style>
