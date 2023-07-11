@@ -1,7 +1,5 @@
 import { makepuzzle, solvepuzzle } from 'sudoku'
 
-export const SAVED_SUDOKU_BOARD_KEY = 'saved-sudoku-board'
-
 export const state = () => ({
     boardHistoryIndex: 0,
     boardHistory: []
@@ -22,6 +20,7 @@ export const getters = {
 
             if (row.length !== [...new Set(row)].length) incorrectRows.push(rowIndex)
         }
+
         return incorrectRows
     },
     incorrectColumns(state, getters) {
@@ -35,6 +34,7 @@ export const getters = {
 
             if (column.length !== [...new Set(column)].length) incorrectColumns.push(columnIndex)
         }
+
         return incorrectColumns
     },
     incorrectSegments(state, getters) {
@@ -98,6 +98,12 @@ export const mutations = {
 }
 
 export const actions = {
+    generateBoard({ commit }) {
+        commit(
+            'updateBoard',
+            makepuzzle().map((value, index) => ({ value, index, initial: value !== null }))
+        )
+    },
     solveBoard({ getters, commit }) {
         if (getters.isSolutionAvailable) {
             commit(
@@ -105,12 +111,6 @@ export const actions = {
                 solvepuzzle(getters.board.map((cell) => cell.value)).map((value, index) => ({ value, index, initial: getters.board.at(index).initial }))
             )
         }
-    },
-    generateBoard({ commit }) {
-        commit(
-            'updateBoard',
-            makepuzzle().map((value, index) => ({ value, index, initial: value !== null }))
-        )
     },
     previousState({ state, commit }) {
         commit('updateBoardHistoryIndex', state.boardHistoryIndex + 1)

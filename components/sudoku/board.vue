@@ -31,9 +31,9 @@
             }"
             :style="{
                 '--incorrect-row': incorrectRow,
-                '--incorrect-segment-row': Math.floor(incorrectRow / 3),
+                '--incorrect-segment-row': incorrectRow && Math.floor(incorrectRow / 3),
                 '--incorrect-column': incorrectColumn,
-                '--incorrect-segment-column': Math.floor(incorrectColumn / 3)
+                '--incorrect-segment-column': incorrectColumn && Math.floor(incorrectColumn / 3)
             }"
         >
             <sudoku-segment

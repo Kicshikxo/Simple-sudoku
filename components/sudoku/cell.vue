@@ -53,10 +53,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 6px;
     background: var(--gray-300);
-    transition: background 0.2s;
     border: 1px solid var(--gray-400);
+    border-radius: 6px;
+    transition: box-shadow 0.2s;
 }
 .sudoku-cell--initial {
     font-size: calc(var(--sudoku-cell-font-size) + 0.5rem);
@@ -64,7 +64,7 @@ export default {
     border: none;
 }
 .sudoku-cell--incorrect {
-    background: var(--red-400);
+    box-shadow: 0 0 4px 2px var(--red-400);
 }
 .sudoku-cell__input {
     width: 100%;
