@@ -28,11 +28,5 @@ export default {
 
     css: ['@mdi/font/css/materialdesignicons.min.css', 'assets/css/rubik.fontface.css', 'assets/css/main.css'],
 
-    plugins: [],
-
-    buildModules: ['@nuxtjs/eslint-module'],
-
-    modules: [],
-
-    build: {}
+    buildModules: ['@nuxtjs/eslint-module']
 }
