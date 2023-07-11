@@ -76,7 +76,7 @@ export default {
 .sudoku-board {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--sudoku-board-gap);
 }
 .sudoku-board__segments {
     position: relative;
