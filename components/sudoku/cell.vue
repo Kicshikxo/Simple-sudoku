@@ -22,11 +22,11 @@ export default {
         }
     },
     data: ({ $store, index }) => ({
-        currentValue: $store.state.sudoku.board.at(index).value
+        currentValue: $store.getters['sudoku/board'].at(index).value
     }),
     computed: {
         currentCell({ $store }) {
-            return $store.state.sudoku.board.at(this.index)
+            return $store.getters['sudoku/board'].at(this.index)
         }
     },
     watch: {
