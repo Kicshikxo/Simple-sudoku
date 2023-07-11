@@ -4,7 +4,7 @@ export const HISTORY_LENGTH = 10
 
 export const state = () => ({
     boardHistoryIndex: 0,
-    boardHistory: [actions.generateBoard()]
+    boardHistory: []
 })
 
 export const getters = {
@@ -111,15 +111,11 @@ export const mutations = {
 }
 
 export const actions = {
-    generateBoard() {
-        return makepuzzle().map((value, index) => ({
-            value: value !== null ? value + 1 : null,
-            index,
-            initial: value !== null
-        }))
-    },
-    newGame({ commit, dispatch }) {
-        dispatch('generateBoard').then((board) => commit('updateBoard', board))
+    generateBoard({ commit }) {
+        commit(
+            'updateBoard',
+            makepuzzle().map((value, index) => ({ value: value !== null ? value + 1 : null, index, initial: value !== null }))
+        )
     },
     solveBoard({ getters, commit }) {
         if (getters.isSolutionAvailable) {
