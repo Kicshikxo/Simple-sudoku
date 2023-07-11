@@ -1,0 +1,7 @@
+:root {
+    --sudoku-board-gap: 1rem;
+    --sudoku-board-inner-border-size: 0.25rem;
+    --sudoku-segment-gap: 0.5rem;
+    --sudoku-cell-size: 2.5rem;
+    --sudoku-cell-font-size: 1rem;
+}
