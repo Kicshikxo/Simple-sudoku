@@ -50,7 +50,7 @@
                 icon="mdi-autorenew"
                 variant="primary"
                 style="width: 100%"
-                @click="$store.dispatch('sudoku/generateBoard')"
+                @click="$store.dispatch('sudoku/newGame')"
             />
         </div>
     </div>
