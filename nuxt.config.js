@@ -1,19 +1,21 @@
 export default {
     target: 'static',
 
+    components: true,
+
     head: {
-        title: 'sudoku',
+        title: 'Судоку',
         htmlAttrs: {
             lang: 'ru'
         },
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '' },
+            { hid: 'description', name: 'description', content: 'Игра судоку' },
             { name: 'format-detection', content: 'telephone=no' }
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
             {
                 rel: 'preload',
                 href: '/fonts/Rubik-Regular.woff2',
@@ -24,11 +26,9 @@ export default {
         ]
     },
 
-    css: ['assets/css/rubik.fontface.css', 'assets/css/main.css'],
+    css: ['@mdi/font/css/materialdesignicons.min.css', 'assets/css/rubik.fontface.css', 'assets/css/main.css'],
 
     plugins: [],
-
-    components: true,
 
     buildModules: ['@nuxtjs/eslint-module'],
 
