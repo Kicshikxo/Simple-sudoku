@@ -55,7 +55,13 @@ export default {
     computed: {
         incorrectRow: ({ $store }) => $store.getters['sudoku/incorrectRows'].at(0) ?? null,
         incorrectColumn: ({ $store }) => $store.getters['sudoku/incorrectColumns'].at(0) ?? null,
-        incorrectSegments: ({ $store }) => $store.getters['sudoku/incorrectSegments'] ?? null
+        incorrectSegments: ({ $store }) => $store.getters['sudoku/incorrectSegments'] ?? null,
+        isGameOver: ({ $store }) => $store.getters['sudoku/isGameOver']
+    },
+    watch: {
+        isGameOver(value) {
+            if (value) setTimeout(() => alert('Поле решено'))
+        }
     }
 }
 </script>
