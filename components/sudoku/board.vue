@@ -85,26 +85,6 @@ export default {
     grid-template-rows: repeat(3, 1fr);
     gap: var(--sudoku-board-gap) var(--sudoku-board-gap);
 }
-.sudoku-board__segments .sudoku-segment:nth-child(3n + 1):not(:first-child):after,
-.sudoku-board__segments .sudoku-segment:nth-child(2):after,
-.sudoku-board__segments .sudoku-segment:nth-child(3):after {
-    z-index: 0;
-    content: '';
-    position: absolute;
-    background: var(--gray-200);
-    border-radius: 8px;
-}
-.sudoku-board__segments .sudoku-segment:nth-child(3n + 1):not(:first-child):after {
-    width: 100%;
-    height: var(--sudoku-board-inner-border-size);
-    transform: translateY(calc(var(--sudoku-board-gap) / -2 - var(--sudoku-board-inner-border-size) / 2));
-}
-.sudoku-board__segments .sudoku-segment:nth-child(2):after,
-.sudoku-board__segments .sudoku-segment:nth-child(3):after {
-    width: var(--sudoku-board-inner-border-size);
-    height: 100%;
-    transform: translateX(calc(var(--sudoku-board-gap) / -2 - var(--sudoku-board-inner-border-size) / 2));
-}
 .sudoku-board__segments:before,
 .sudoku-board__segments:after {
     z-index: 1;
